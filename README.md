@@ -1,33 +1,36 @@
-# Proyecto 01 - AnimeDex
+# AnimeDex
 
-SPA construida con Vite + React. Consume la API publica de Jikan (MyAnimeList) para explorar animes, ver detalles y gestionar favoritos.
+SPA construida con Vite + React. Consume la API pública de Jikan (MyAnimeList) para explorar animes, ver detalles a fondo y gestionar favoritos.
 
-## Rutas disponibles
+## Características
 
-- `/` Home (landing)
-- `/explore` Exploracion con busqueda y filtros
-- `/anime/:id` Detalle dinamico
-- `/favorites` Favoritos
-- `/contact` Formulario con validacion y modal
-- `*` 404
+- **Gestión Local:** Colección de favoritos guardada en el `localStorage` del navegador.
+- **Visuales:** Diseño y estructura 100% basados en Tailwind CSS.
 
-## Tecnologias
+## Rutas
 
-- React + Vite
-- React Router
-- Tailwind CSS
-- Jikan API
-- react-hot-toast
+- `/` Inicio y métricas referenciales
+- `/explore` Buscador centralizado
+- `/anime/:id` Tarjeta de detalles y puntuación
+- `/favorites` Catálogo y gestión individual
+- `/contact` Formulario web
+- `*` 404 Not Found
 
-## Como ejecutar
+## Tecnologías
 
-1. Instala dependencias:
-   - `npm install`
-2. Levanta el entorno:
-   - `npm run dev`
-3. Abre `http://localhost:5173`
+React, React Router DOM, Vite, Tailwind CSS, Jikan API (V4), React Hot Toast.
 
-## Notas
+## Ejecución Local
 
-- Favoritos persisten en `localStorage`.
-- Reintenta si la API responde con limite temporal.
+1. Ingresa a la carpeta raíz:
+   ```bash
+   cd project01
+   ```
+2. Instala las dependencias:
+   ```bash
+   npm install
+   ```
+3. Ejecuta el servidor:
+   ```bash
+   npm run dev
+   ```
