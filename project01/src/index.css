@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Sora', sans-serif;
+  color: #2f1d73;
+  background: radial-gradient(circle at top, rgba(189, 109, 242, 0.18), transparent 55%),
+    radial-gradient(circle at 20% 30%, rgba(217, 163, 192, 0.16), transparent 45%),
+    #f9f6fb;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
