@@ -9,7 +9,7 @@ const stats = [
       </svg>
     ),
     number: '10 000+',
-    label: 'Animes en catalogo',
+    label: 'Animes en catálogo',
   },
   {
     icon: (
@@ -19,7 +19,7 @@ const stats = [
       </svg>
     ),
     number: 'Multiples',
-    label: 'Generos y demografias',
+    label: 'Géneros y demografías',
   },
   {
     icon: (
@@ -63,7 +63,7 @@ function HomePage() {
           ¿Por dónde empezamos?
         </h3>
         <p className="mt-4 text-[#768298] max-w-lg mx-auto">
-          Filtra por genero, busca cualquier titulo y guarda los que mas te interesan.
+          Filtra por género, busca cualquier título y guarda los que más te interesan.
         </p>
         <div className="mt-10">
           <Link

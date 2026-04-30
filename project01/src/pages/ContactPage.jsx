@@ -32,7 +32,7 @@ function ContactPage() {
   }
 
   const handleConfirm = () => {
-    toast.success('Mensaje enviado con exito')
+    toast.success('Mensaje enviado con éxito')
     setForm({ name: '', email: '', message: '' })
     setTouched({})
     dialogRef.current?.close()
@@ -126,7 +126,7 @@ function ContactPage() {
         <button
           type="submit"
           disabled={!isValid}
-          className="rounded bg-[#7adbf0] px-6 py-3 text-sm font-semibold text-[#1c2331] transition-opacity disabled:bg-[#7adbf0]/50"
+          className="rounded bg-aurora px-6 py-3 text-sm font-semibold text-night transition-opacity hover:opacity-90 disabled:bg-aurora/50"
         >
           Enviar mensaje
         </button>
@@ -140,7 +140,7 @@ function ContactPage() {
           Confirmar envio
         </h3>
         <p className="mt-2 text-sm text-slate-500">
-          Confirmas que deseas enviar este mensaje?
+          ¿Confirmas que deseas enviar este mensaje?
         </p>
         <div className="mt-6 flex flex-wrap items-center gap-3">
           <button

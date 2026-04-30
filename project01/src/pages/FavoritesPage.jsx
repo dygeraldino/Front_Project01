@@ -36,7 +36,7 @@ function FavoritesPage() {
     <div className="flex flex-col gap-8">
       <SectionHeader
         title="Favoritos"
-        subtitle="Tu seleccion personal de animes guardados."
+        subtitle={favorites.length === 1 ? "Tienes 1 anime guardado en tu selección." : `Tienes ${favorites.length} animes guardados en tu selección.`}
       />
 
       {favorites.length === 0 ? (

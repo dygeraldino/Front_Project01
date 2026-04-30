@@ -14,7 +14,7 @@ function SearchBar({ value, onChange, onSubmit }) {
         type="search"
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Busca por titulo..."
+        placeholder="Busca por título..."
         className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm focus:border-aurora focus:outline-none focus:ring-2 focus:ring-aurora/30"
       />
       <button

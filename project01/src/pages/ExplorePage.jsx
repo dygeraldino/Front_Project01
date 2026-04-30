@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import useDebounce from '../hooks/useDebounce'
 import toast from 'react-hot-toast'
 import AnimeCard from '../components/AnimeCard'
 import EmptyState from '../components/EmptyState'
@@ -20,6 +21,9 @@ function ExplorePage() {
   const [error, setError] = useState('')
   const [refreshKey, setRefreshKey] = useState(0)
 
+  // Aplicamos el hook de debounce a nuestra query
+  const debouncedQuery = useDebounce(query, 500)
+
   // Este Hook se ejecuta cada vez que cambian los filtros o la pagina
   useEffect(() => {
     // Definimos una funcion asincrona dentro del useEffect
@@ -30,7 +34,7 @@ function ExplorePage() {
       try {
         // Llamamos a nuestra funcion de API
         const data = await fetchAnimeList({
-          query,
+          query: debouncedQuery,
           type,
           status,
           page,
@@ -48,7 +52,7 @@ function ExplorePage() {
       } catch (err) {
         // Si la peticion falla, guardamos el mensaje de error
         setError(err.message)
-        toast.error('No se pudo cargar la exploracion.')
+        toast.error('No se pudo cargar la exploración.')
       } finally {
         // Pase lo que pase, ocultamos el loader al terminar
         setIsLoading(false)
@@ -59,8 +63,8 @@ function ExplorePage() {
     loadData()
     
     // NOTA DIDACTICA: Hemos quitado logica compleja de limpieza (AbortController) 
-    // para hacer mas simple de aprender y entender esta leccion basica.
-  }, [query, type, status, page, refreshKey])
+    // para hacer más simple de aprender y entender esta lección básica.
+  }, [debouncedQuery, type, status, page, refreshKey])
 
   const handleSearchChange = (value) => {
     setQuery(value)
@@ -87,7 +91,7 @@ function ExplorePage() {
   return (
     <div className="flex flex-col gap-8">
       <SectionHeader
-        title="Exploracion"
+        title="Exploración"
         subtitle="Busca animes en la API de MyAnimeList y guarda tus favoritos."
       />
       <SearchBar value={query} onChange={handleSearchChange} onSubmit={handleSubmit} />
@@ -105,7 +109,7 @@ function ExplorePage() {
       ) : results.length === 0 ? (
         <EmptyState
           title="Sin resultados"
-          description="Ajusta la busqueda o cambia los filtros para seguir explorando."
+          description="Ajusta la búsqueda o cambia los filtros para seguir explorando."
         />
       ) : (
         <>

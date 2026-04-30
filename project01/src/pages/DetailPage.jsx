@@ -60,7 +60,7 @@ function DetailPage() {
           to="/explore"
           className="text-sm font-semibold text-slate-500 hover:text-night"
         >
-          Volver a exploracion
+          Volver a exploración
         </Link>
         <h2 className="font-display text-3xl font-semibold text-night">
           {anime.title}

@@ -11,8 +11,8 @@ function Hero() {
           Descubre el <span className="text-mist">Anime</span>
         </h1>
         <p className="mt-6 max-w-2xl text-lg text-slate-300">
-          Informacion detallada de cada serie japonesa en el planeta. Busqueda, filtros
-          y coleccion de favoritos.
+          Información detallada de cada serie japonesa en el planeta. Búsqueda, filtros
+          y colección de favoritos.
         </p>
         <div className="mt-10">
           <Link

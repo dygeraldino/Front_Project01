@@ -10,7 +10,7 @@ const statusOptions = [
   { value: '', label: 'Todos los estados' },
   { value: 'airing', label: 'En emision' },
   { value: 'complete', label: 'Finalizado' },
-  { value: 'upcoming', label: 'Proximamente' },
+  { value: 'upcoming', label: 'Próximamente' },
 ]
 
 function FiltersBar({ type, status, onTypeChange, onStatusChange }) {
