@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import useDebounce from '../hooks/useDebounce'
 import toast from 'react-hot-toast'
 import AnimeCard from '../components/AnimeCard'
@@ -11,10 +12,13 @@ import SectionHeader from '../components/SectionHeader'
 import { fetchAnimeList } from '../utils/api'
 
 function ExplorePage() {
-  const [query, setQuery] = useState('')
-  const [type, setType] = useState('')
-  const [status, setStatus] = useState('')
-  const [page, setPage] = useState(1)
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const query = searchParams.get('q') || ''
+  const type = searchParams.get('type') || ''
+  const status = searchParams.get('status') || ''
+  const page = parseInt(searchParams.get('page') || '1', 10)
+
   const [results, setResults] = useState([])
   const [pagination, setPagination] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -67,8 +71,12 @@ function ExplorePage() {
   }, [debouncedQuery, type, status, page, refreshKey])
 
   const handleSearchChange = (value) => {
-    setQuery(value)
-    setPage(1)
+    setSearchParams(prev => {
+      if (value) prev.set('q', value)
+      else prev.delete('q')
+      prev.set('page', '1')
+      return prev
+    })
   }
 
   const handleSubmit = (event) => {
@@ -76,13 +84,21 @@ function ExplorePage() {
   }
 
   const handleTypeChange = (value) => {
-    setType(value)
-    setPage(1)
+    setSearchParams(prev => {
+      if (value) prev.set('type', value)
+      else prev.delete('type')
+      prev.set('page', '1')
+      return prev
+    })
   }
 
   const handleStatusChange = (value) => {
-    setStatus(value)
-    setPage(1)
+    setSearchParams(prev => {
+      if (value) prev.set('status', value)
+      else prev.delete('status')
+      prev.set('page', '1')
+      return prev
+    })
   }
 
   const canPrev = page > 1
@@ -126,7 +142,12 @@ function ExplorePage() {
             <button
               type="button"
               className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 disabled:opacity-40"
-              onClick={() => setPage((prev) => Math.max(prev - 1, 1))}
+              onClick={() => {
+                setSearchParams(prev => {
+                  prev.set('page', Math.max(page - 1, 1).toString())
+                  return prev
+                })
+              }}
               disabled={!canPrev}
             >
               Anterior
@@ -134,7 +155,12 @@ function ExplorePage() {
             <button
               type="button"
               className="rounded-full bg-night px-4 py-2 text-sm font-semibold text-white disabled:opacity-40"
-              onClick={() => setPage((prev) => prev + 1)}
+              onClick={() => {
+                setSearchParams(prev => {
+                  prev.set('page', (page + 1).toString())
+                  return prev
+                })
+              }}
               disabled={!canNext}
             >
               Siguiente
